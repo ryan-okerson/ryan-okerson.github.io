@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+body { background: #000; color: #999; font-family: Georgia, serif; 
+       max-width: 650px; margin: 60px auto; line-height: 1.6; }
+a { color: #999; }
+a:hover { color: #ccc; }
+</style>
+</head>
+<body>
+<h1>Ryan Okerson</h1>
+<p>Seattle / Systems Engineer / <a href="https://hardpoint.build">Hardpoint</a></p>
+<h2>Writing</h2>
+<ul id="posts"></ul>
+<script>
+fetch('posts.json').then(r=>r.json()).then(posts => {
+  posts.forEach(p => {
+    document.getElementById('posts').innerHTML += 
+      `<li><a href="${p.file}">${p.title}</a> — ${p.date}</li>`;
+  });
+});
+</script>
+</body>
+</html>
