@@ -1,0 +1,114 @@
+:root {
+  --bg: #16181c;
+  --panel: #1f2227;
+  --line: #33373e;
+  --text: #d8dbe0;
+  --muted: #8b9099;
+  --accent: #4e79a7;
+  --bad: #e15759;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font: 13px/1.4 system-ui, sans-serif;
+}
+
+body { display: flex; flex-direction: column; }
+
+header {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--line);
+  background: var(--panel);
+}
+
+header .spacer { flex: 1; }
+
+button, select, input {
+  background: #2a2e35;
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 3px 8px;
+  font: inherit;
+}
+
+button:hover { border-color: var(--accent); }
+input[type='number'] { width: 64px; }
+
+main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) minmax(360px, 1.4fr) minmax(340px, 1fr);
+  min-height: 0;
+}
+
+section { display: flex; flex-direction: column; min-height: 0; border-right: 1px solid var(--line); }
+
+.tabs { display: flex; gap: 4px; padding: 6px; }
+.tabs .active { border-color: var(--accent); }
+
+.editor { flex: 1; min-height: 0; overflow: auto; }
+.editor .cm-editor { height: 100%; }
+
+#sliders {
+  max-height: 40%;
+  overflow: auto;
+  padding: 6px 10px;
+  border-top: 1px solid var(--line);
+}
+
+.slider-row {
+  display: grid;
+  grid-template-columns: 130px 1fr 70px;
+  gap: 6px;
+  align-items: center;
+  margin: 2px 0;
+}
+
+.slider-row span:last-child { text-align: right; color: var(--muted); }
+.slider-heading { color: var(--muted); margin-top: 6px; }
+
+#center { position: relative; }
+#view { flex: 1; position: relative; min-height: 0; }
+
+.tooltip {
+  position: absolute;
+  display: none;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 2px 6px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.scrubber { display: flex; gap: 8px; align-items: center; padding: 6px 10px; border-top: 1px solid var(--line); }
+.scrubber input { flex: 1; }
+#step-label { min-width: 220px; color: var(--muted); }
+
+#right { overflow: auto; }
+#mobility { padding: 8px 10px; border-bottom: 1px solid var(--line); }
+#mobility .bad { color: var(--bad); }
+#mobility button { margin: 2px; }
+#mobility button.active { border-color: #edc948; }
+
+.plot-controls { display: flex; gap: 6px; align-items: center; padding: 6px 10px; flex-wrap: wrap; }
+#plots canvas { width: 100%; height: 150px; display: block; border-bottom: 1px solid var(--line); }
+
+#log {
+  margin: 0;
+  padding: 6px 10px;
+  color: var(--muted);
+  white-space: pre-wrap;
+  font-size: 11px;
+  min-height: 60px;
+}
+
+#log .error { color: var(--bad); }

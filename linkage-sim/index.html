@@ -4,9 +4,55 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Linkage Simulator</title>
+    <link rel="stylesheet" href="/src/ui/style.css" />
   </head>
   <body>
-    <div id="app"></div>
+    <header>
+      <strong>Linkage simulator</strong>
+      <select id="example" title="Load an example model"></select>
+      <button id="run" title="Run the script and solve (Ctrl+Enter)">Run</button>
+      <label>Steps <input id="steps" type="number" min="2" max="1000" value="41" /></label>
+      <span class="spacer"></span>
+      <button id="load-json">Load JSON</button>
+      <button id="save-json">Save JSON</button>
+      <button id="save-csv">Export CSV</button>
+      <button id="save-png">Export PNG</button>
+      <input id="json-file" type="file" accept=".json,application/json" hidden />
+    </header>
+    <main>
+      <section id="left">
+        <div class="tabs">
+          <button data-tab="model" class="active">Model</button>
+          <button data-tab="library">library.js</button>
+        </div>
+        <div id="editor-model" class="editor"></div>
+        <div id="editor-library" class="editor" hidden></div>
+        <div id="sliders"></div>
+      </section>
+      <section id="center">
+        <div id="view"></div>
+        <div class="scrubber">
+          <button id="play">Play</button>
+          <input id="scrub" type="range" min="0" max="0" value="0" />
+          <span id="step-label"></span>
+        </div>
+      </section>
+      <section id="right">
+        <div id="mobility"></div>
+        <div class="plot-controls">
+          <label>x axis
+            <select id="x-axis">
+              <option value="angle">driven angle (deg)</option>
+              <option value="time">time (s)</option>
+            </select>
+          </label>
+          <select id="add-joint"></select>
+          <button id="clear-selection">Clear picks</button>
+        </div>
+        <div id="plots"></div>
+        <pre id="log"></pre>
+      </section>
+    </main>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
